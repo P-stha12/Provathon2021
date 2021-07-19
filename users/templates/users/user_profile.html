@@ -1,0 +1,50 @@
+{% extends 'posts/base.html' %}
+{% block content %}	
+	<section class="container main-content">
+		<div class="row">
+			<div class="col-md-9">
+				<div class="row">
+					<div class="user-profile">
+						<div class="col-md-7">
+							<div class="page-content">
+								<h1><b>About {{ user.username }}</b></h1>
+								<h3>Email : <a href = "mailto: {{user.email}}">{{ user.email }}</a></h3>
+								<h3>Phone : {{ user.profile.contact }}</h3>
+								<h3>House Number: {{ user.profile.gharNo }}</h3> 
+								<div class="user-profile-img"><img width="80" height="60" 
+								 src="{{user.profile.image.url}}" alt="user">
+								</div>
+
+								
+							</div><!-- End page-content -->
+						</div><!-- End col-md-12 -->
+						<div class="col-md-12">
+							<hr/>
+							{% for post in posts %}
+							<article class="question question-type-normal">
+								<h2>
+									<a href="{% url 'post-details' post.id %}">{{post.title}}</a>
+								</h2>
+								<a class="question-report" href="#">Report</a>
+								<div class="question-author">
+									<a href="#" original-title="ahmed" class="question-author-img tooltip-n"><span></span><img alt="" src="{{ post.author.profile.image.url }}"></a>
+								</div>
+								<div class="question-inner">
+									<div class="clearfix"></div>
+									<p class="question-desc">{{ post.content }}</p>
+										<span class=""><a href="#"><i class="icon-user"></i>{{post.author.username}}</a></span>
+										<span class=""><i class="icon-phone"></i>{{ post.author.profile.contact }}</span>
+										<span class=""><a href="#"><i class="icon-home"></i>{{ post.author.profile.gharNo}}</a></span>
+										<div class="clearfix"></div>
+								</div>
+							</article>
+							{% endfor %}
+						</div><!-- End col-md-12 -->
+					</div><!-- End user-profile -->
+				</div><!-- End row -->
+			</div><!-- End main -->
+		</div>
+	</section>
+	
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "posts/base.html" %} 
+{% block content %}	
+	
+	<section class="container main-content page-full-width">
+		<div class="row">
+			<div class="contact-us">
+				
+				<div class="col-md-7">
+					<div class="page-content">
+						<h2>Say hello !</h2>
+						<hr/>
+						<form class="form-style form-style-3 form-style-5 form-js" action="#" method="post">
+							<div class="form-inputs clearfix">
+								<p>
+									<label for="name" class="required">Name<span>*</span></label>
+									<input type="text" class="required-item" value="" name="name" id="name" aria-required="true">
+								</p>
+								<p>
+									<label for="mail" class="required">E-Mail<span>*</span></label>
+									<input type="email" class="required-item" id="mail" name="mail" value="" aria-required="true">
+								</p>
+								<p>
+									<label for="url" class="required">Website</label>
+									<input type="text" id="url" name="url" value="">
+								</p>
+							</div>
+							<div class="form-textarea">
+								<p>
+									<label for="message" class="required">Message<span>*</span></label>
+									<textarea id="message" class="required-item" name="message" aria-required="true" cols="58" rows="7"></textarea>
+								</p>
+							</div>
+							<p class="form-submit">
+								<input name="submit" type="submit" value="Send" class="submit button small color">
+							</p>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	
+
+
+{% endblock %}

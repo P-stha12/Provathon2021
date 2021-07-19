@@ -1,0 +1,36 @@
+{% extends "posts/base.html" %} 
+{% block content %}
+	
+	<section class="container main-content">
+		<div class="row">
+			<div class="col-md-9">
+				<article class="question single-question question-type-normal">
+					<h2>
+						<a href="single_question.html">{{ post.title }}</a>
+					</h2>
+					<a class="question-report" href="#">Report</a>
+					<div class="question-inner">
+						<div class="clearfix"></div>
+						<div class="question-desc">
+							<p>{{ post.content }}</p>
+						</div>
+							<span class=""><a href="#"><i class="icon-user"></i>{{post.author.username}}</a></span>
+							<span class=""><i class="icon-phone"></i>{{ post.author.profile.contact }}</span>
+							<span class=""><a href="#"><i class="icon-home"></i>{{ post.author.profile.gharNo}}</a></span>
+						{% if post.author == user%}
+						<div>
+						  <a class="btn btn-secondary" href="{% url 'post-update' object.id %}">Update</a>
+						</div>
+					  	{% endif %}
+						<div class="clearfix"></div>
+					</div>
+				</article>
+			</aside>
+		</div>
+	</section>
+	
+	
+
+
+
+{% endblock %}

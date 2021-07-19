@@ -1,0 +1,112 @@
+{% extends "posts/base.html" %} 
+{% load static %}
+{% block content %}
+	
+	<div class="section-warp ask-me">
+		<div class="container clearfix">
+			<div class="box_icon box_warp box_no_border box_no_background" box_border="transparent" box_background="transparent" box_color="#FFF">
+				<div class="row">
+					<div class="col-md-3">
+						<h2 style="margin-top:15%;">Welcome to Our Site</h2>
+						<p>A site built for making our lives easier. Help or get help from people of your locality. Solve minor problems at community level and reduce pressure at health centers.  Stay happy, stay healthy</p>
+						<div class="clearfix"></div>
+						<a class="color button dark_button medium" href="#">About Us</a>
+						<a class="color button dark_button medium" href="{% url 'user-registration'%}">Join Now</a>
+					</div>
+					<div class="col-md-9">
+							<p style="margin-left:10%;">
+								<iframe src="https://ourworldindata.org/explorers/coronavirus-data-explorer?zoomToSelection=true&time=2020-03-01..latest&pickerSort=desc&pickerMetric=total_cases&hideControls=true&Metric=Confirmed+cases&Interval=7-day+rolling+average&Relative+to+Population=false&Align+outbreaks=false&country=~NPL" style="width: 100%; height: 350px; border: 0px none;"></iframe>
+							</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<section class="container main-content">
+		<div class="row">
+			<div class="col-md-9">
+				
+				<div class="tabs-warp question-tab">
+		            <ul class="tabs">
+		                <li class="tab"><a href="#" class="current">Recent Questions</a></li>
+		                <li class="tab"><a href="#">Resolved</a></li>
+		            </ul>
+
+		            <div class="tab-inner-warp">
+						<div class="tab-inner">
+						
+							{% for post in posts %}
+							{% if not post.settled %}
+							<article class="question question-type-normal">
+								<h2>
+									<a href="{% url 'post-details' post.id %}">{{post.title}}</a>
+								</h2>
+								<a class="question-report" href="#">Report</a>
+								<div class="question-author">
+									<a href="#" original-title="ahmed" class="question-author-img tooltip-n"><span></span><img alt="" src="{{ post.author.profile.image.url }}"></a>
+								</div>
+								<div class="question-inner">
+									<div class="clearfix"></div>
+									<p class="question-desc">{{ post.content }}</p>
+										<span class=""><a href="#"><i class="icon-user"></i>{{post.author.username}}</a></span>
+										<span class=""><i class="icon-phone"></i>{{ post.author.profile.contact }}</span>
+										<span class=""><a href="https://goo.gl/maps/BdanxvcMCHsG3Kp79" target="blank"><i class="icon-home"></i>{{ post.author.profile.Gcode}}</a></span>
+										<div class="clearfix"></div>
+								</div>
+							</article>
+							{% endif %}
+							{% endfor %}
+
+					    </div>
+					</div>
+
+							            <div class="tab-inner-warp">
+						<div class="tab-inner">
+						
+							{% for post in posts %}
+							{% if post.settled %}
+							<article class="question question-type-normal">
+								<h2>
+									<a href="{% url 'post-details' post.id %}">{{post.title}}</a>
+								</h2>
+								<a class="question-report" href="#">Report</a>
+								<div class="question-author">
+									<a href="#" original-title="ahmed" class="question-author-img tooltip-n"><span></span><img alt="" src="{{ post.author.profile.image.url }}"></a>
+								</div>
+								<div class="question-inner">
+									<div class="clearfix"></div>
+									<p class="question-desc">{{ post.content }}</p>
+									<span class=""><a href="#"><i class="icon-user"></i>{{post.author.username}}</a></span>
+									<span class=""><i class="icon-phone"></i>{{ post.author.profile.contact }}</span>
+									<span class=""><a href="#"><i class="icon-home"></i>{{ post.author.profile.gharNo}}</a></span>
+									<div class="clearfix"></div>
+								</div>
+							</article>
+							{% endif %}
+							{% endfor %}
+
+					    </div>
+					</div>
+
+
+		        </div>
+			</div>
+			<aside class="col-md-3 sidebar">
+				<div class="widget widget_stats">
+					<h3 class="widget_title">Stats</h3>
+					<div class="ul_list ul_list-icon-ok">
+						<ul>
+							<li><i class="icon-question-sign"></i>Questions ( <span>20</span> )</li>
+							<li><i class="icon-comment"></i>Answers ( <span>50</span> )</li>
+						</ul>
+					</div>
+				</div>		
+			</aside>
+		</div>
+	</section>
+	
+	
+
+
+{% endblock %}

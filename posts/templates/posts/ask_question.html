@@ -1,0 +1,30 @@
+{% extends "posts/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+			
+	<section class="container main-content">
+		<div class="row">
+			<div class="col-md-9">
+				
+				<div class="page-content ask-question">
+					<div class="boxedtitle page-title"><h2>Ask Question</h2></div>
+					
+					<p><b>Post your query</b></p>
+					
+					<div class="form-style form-style-3" id="question-submit">
+						<form method="POST">
+						{% csrf_token %}
+						{{ form|crispy }}
+						<input type="submit" value="Post" class="button color small submit">
+						</form>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</section>
+	
+	
+
+
+{% endblock %}

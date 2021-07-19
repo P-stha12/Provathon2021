@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en"> 
+
+<head>
+
+	<meta charset="utf-8">
+	<title>Provathon</title>
+	<meta name="description" content="provsthon">
+	<meta name="author" content="DevDash">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="stylesheet" href="{% static 'posts/style.css' %}">
+	<link rel="stylesheet" href="{% static 'posts/css/responsive.css' %}">
+	<link rel="stylesheet" href="{% static 'posts/css/contents.css' %}">
+	<link rel="shortcut icon" href="{% static 'posts/images/favicon.png' %}">
+  
+</head>
+<body>
+
+
+<div id="wrap" class="grid_1200">
+    	<div id="header-top">
+		<section class="container clearfix">
+			<nav class="header-top-nav">
+				<ul>
+					<li><a href="{% url 'contact' %}"><i class="icon-envelope"></i>Contact</a></li>
+					{% if user.is_authenticated %}
+					<li><a href="{% url 'logout' %}" id="login-panel"><i class="icon-user"></i>Logout</a></li>
+					{% else %}
+					<li><a href="{% url 'login' %}" id="login-panel"><i class="icon-user"></i>Login</a></li>
+					{% endif %}
+				</ul>
+			</nav>
+			
+		</section>
+	</div>
+	<header id="header">
+		<section class="container clearfix">
+			<div class="logo"><a href="{% url 'home' %}"><img alt="" src="{% static 'posts/images/logo.png'%}"></a></div>
+			<nav class="navigation">
+				<ul>
+					<li class="current_page_item"><a href="{% url 'home' %}">Home</a>
+					</li>
+					<li class="ask_question"><a href="{% url 'post-create' %}">Ask Question</a></li>
+					<li><a href="https://www.neplinews.com" target="blank">News</a></li>
+					{% if user.is_authenticated %}
+					<li><a href="{% url 'user-profile' user.username%}">{{user.username}}</a>
+					{% else %}
+					<li><a href="{% url 'login'%}">User</a></li>
+					{% endif%}
+					<li><a href="{% url 'covid'%}">Covid Center</a></li>
+					<li><a href="{% url 'contact'%}">Contact Us</a></li>
+				</ul>
+			</nav>
+		</section>
+	</header>
+    {% block content %}{% endblock %}
+</div>
+
+<div class="go-up"><i class="icon-chevron-up"></i></div>
+<script src="{% static 'posts/js/jquery.min.js' %}"></script>
+<script src="{% static 'posts/js/tabs.js' %}"></script>
+<script src="{% static 'posts/js/custom.js' %}"></script>
+
+</body>
+<footer id="footer-bottom">
+		<section class="container">
+			<div class="copyrights f_left">Copyright<a href="#"></a></div>
+
+		</section>
+	</footer>
+
+</html>

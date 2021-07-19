@@ -1,0 +1,37 @@
+{% extends 'posts/base.html'%}
+{% load crispy_forms_tags %}
+{% block content %}
+	
+	<section class="container main-content" >
+		<div class="login">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="page-content">
+						<h2>Login</h2>
+						<div class="form-style form-style-3">
+							<form method="POST">
+								{% csrf_token %}
+								{{ form|crispy }}
+								<input type="submit" value="login" class = "button color small login">
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="page-content">
+						<h2>Register Now</h2>
+						<p>Register now and post your needs</p>
+						<a class="button small color signup" href="{% url 'user-registration' %}" >Create an account</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<footer id="footer-bottom">
+		<section class="container">
+			<div class="copyrights f_left">Copyright <a href="#">DevDash</a></div>
+			
+		</section>
+	</footer>
+{% endblock %}
